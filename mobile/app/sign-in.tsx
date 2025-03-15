@@ -30,7 +30,7 @@ const SignIn = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView contentContainerClassName="h-full">
-        <Image source={images.onboarding} className=" w-full h-4/6" resizeMode="contain" />
+        <Image source={images.onboarding} className=" w-full h-4/6 mt-4" resizeMode="contain" />
         <View>
           <Text className="text-base text-center uppercase font-rubik text-white">
             Selamat Datang di BlackBox Camp

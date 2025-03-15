@@ -1,11 +1,28 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import { View, Text, ScrollView, Image, TouchableOpacity, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Redirect } from 'expo-router';
 
+import { loginWithGoogle } from '@/lib/supabase';
+import { useGlobalContext } from '@/lib/global-provider';
 import { icons, images } from '@/constants';
 
 const SignIn = () => {
-  const handleLogin = () => {};
+  const [session, setSession] = useState('');
+
+  const { loading, isLogged } = useGlobalContext();
+
+  if (!loading && isLogged) return <Redirect href="/" />;
+
+  const handleLogin = async () => {
+    const result = await loginWithGoogle();
+
+    if (result) {
+      console.log(result);
+    } else {
+      Alert.alert('Error', 'Failed to login');
+    }
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">

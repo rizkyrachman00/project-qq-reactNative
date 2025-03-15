@@ -1,0 +1,8 @@
+.husky
+.next
+.vscode
+.vercel
+node_modules
+.eslintcache
+.DS_Store
+package-lock.json

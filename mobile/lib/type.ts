@@ -4,7 +4,7 @@ type ContextType = {
   session: Session | null;
   data: {} | null;
   loading: boolean;
-  isLogged: boolean;
+  isLoggedIn: boolean;
   refetch: (newParams: Record<string, string | number>) => Promise<void>;
 };
 

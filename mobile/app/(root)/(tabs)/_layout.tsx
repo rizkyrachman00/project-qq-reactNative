@@ -1,19 +1,36 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { Tabs } from 'expo-router';
 
-const _Layout = () => {
+import { icons } from '@/constants';
+
+const TabIcon = ({ focused, icon, title }: { focused: boolean; icon: any; title: string }) => (
+  <View className="flex-1 mt-3 flex flex-col items-center">
+    <Image
+      source={icon}
+      tintColor={focused ? '#FFBA0A' : '#666876'}
+      resizeMode="contain"
+      className="size-8"
+    />
+    <Text
+      className={`${focused ? 'text-primary font-rubik-medium' : 'text-secondary font-medium'} text-xs w-full text-center mt-1`}
+    >
+      {title}
+    </Text>
+  </View>
+);
+
+const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
-        tabBarActiveTintColor: '#FFA001',
-        tabBarInactiveTintColor: '#CDCDE0',
         tabBarStyle: {
-          backgroundColor: '#161622',
+          backgroundColor: 'white',
+          position: 'absolute',
+          borderColor: '#0061FF1A',
           borderTopWidth: 1,
-          borderTopColor: '#232533',
-          height: 84,
+          minHeight: 70,
         },
       }}
     >
@@ -22,10 +39,31 @@ const _Layout = () => {
         options={{
           title: 'Home',
           headerShown: false,
+          tabBarIcon: ({ focused }) => <TabIcon icon={icons.home} focused={focused} title="Home" />,
+        }}
+      />
+      <Tabs.Screen
+        name="check-situasi"
+        options={{
+          title: 'Check Situasi',
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon icon={icons.people} focused={focused} title="Check Situasi" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon icon={icons.person} focused={focused} title="Profile" />
+          ),
         }}
       />
     </Tabs>
   );
 };
 
-export default _Layout;
+export default TabsLayout;

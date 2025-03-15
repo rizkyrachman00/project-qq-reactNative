@@ -26,10 +26,10 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     });
   }, []);
 
-  const isLogged = !!session;
+  const isLoggedIn = !!session;
 
   return (
-    <GlobalContext.Provider value={{ session, loading, isLogged, refetch, data }}>
+    <GlobalContext.Provider value={{ session, loading, isLoggedIn, refetch, data }}>
       {children}
     </GlobalContext.Provider>
   );

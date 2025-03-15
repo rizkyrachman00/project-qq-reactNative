@@ -9,18 +9,19 @@ import { icons, images } from '@/constants';
 import { useSupabase } from '@/hooks/useSupabase';
 
 const SignIn = () => {
-  const { loading, isLogged, session, data } = useGlobalContext();
+  const { loading, isLoggedIn, session, data, refetch } = useGlobalContext();
 
-  console.log('ini data', data);
-  console.log('ini session', session);
+  // console.log('ini data', data);
+  // console.log('ini session', session);
 
-  if (!loading && isLogged) return <Redirect href="/" />;
+  if (!loading && isLoggedIn) return <Redirect href="/" />;
 
   const handleLogin = async () => {
     const result = await loginWithGoogle();
 
     if (result) {
-      console.log('ini data', data);
+      // console.log('ini data', data);
+      refetch();
     } else {
       Alert.alert('Error', 'Failed to login');
     }

@@ -8,12 +8,12 @@ const TabIcon = ({ focused, icon, title }: { focused: boolean; icon: any; title:
   <View className="flex-1 mt-3 flex flex-col items-center">
     <Image
       source={icon}
-      tintColor={focused ? '#FFBA0A' : '#666876'}
+      tintColor={focused ? '#2176ff' : '#666876'}
       resizeMode="contain"
       className="size-8"
     />
     <Text
-      className={`${focused ? 'text-primary font-rubik-medium' : 'text-secondary font-medium'} text-xs w-full text-center mt-1`}
+      className={`${focused ? ' text-blue font-rubik-medium' : 'text-primary font-medium'} text-xs w-full text-center mt-1`}
     >
       {title}
     </Text>
@@ -53,13 +53,11 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="more"
         options={{
-          title: 'Profile',
+          title: 'More',
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon={icons.person} focused={focused} title="Profile" />
-          ),
+          tabBarIcon: ({ focused }) => <TabIcon icon={icons.more} focused={focused} title="More" />,
         }}
       />
     </Tabs>

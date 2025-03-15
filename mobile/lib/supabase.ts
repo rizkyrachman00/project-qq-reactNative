@@ -95,8 +95,10 @@ export async function getCurrentUser() {
 
     if (user) {
       return {
+        // ...user,
         id: user.id,
         email: user.email,
+        fullName: user.user_metadata?.full_name || 'BlackBox Member',
         userAvatar: user.user_metadata?.avatar_url || null,
       };
     }

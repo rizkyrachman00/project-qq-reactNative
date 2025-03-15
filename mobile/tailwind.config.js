@@ -14,7 +14,7 @@ module.exports = {
         'rubik-light': ['Rubik-Light', 'sans-serif'],
       },
       colors: {
-        primary: '#030014',
+        primary: '#000000',
         secondary: {
           DEFAULT: '#FFBA0A',
           100: '#FFC533',
@@ -22,6 +22,9 @@ module.exports = {
         },
         green: {
           DEFAULT: '#38B000',
+        },
+        blue: {
+          DEFAULT: '#2176ff',
         },
         accent: {
           100: '#FFBA0A',

@@ -23,6 +23,9 @@ import run from '@/assets/icons/run.png';
 import wifi from '@/assets/icons/wifi.png';
 import location from '@/assets/icons/location.png';
 import edit from '@/assets/icons/edit.png';
+import more from '@/assets/icons/more.png';
+import social from '@/assets/icons/social.png';
+import whatsapp from '@/assets/icons/whatsapp.png';
 
 export default {
   google,
@@ -50,4 +53,7 @@ export default {
   wifi,
   location,
   edit,
+  more,
+  social,
+  whatsapp,
 };

@@ -1,13 +1,18 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
-import { supabase } from './supabase';
+import { getCurrentUser, supabase } from './supabase';
 import { Session } from '@supabase/supabase-js';
-import { ContextType, Props, UserProfile } from './type';
+import { ContextType, Props } from './type';
+import { useSupabase } from '@/hooks/useSupabase';
 
 export const GlobalContext = createContext<ContextType | undefined>(undefined);
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const { data, refetch } = useSupabase({
+    fn: getCurrentUser,
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -24,7 +29,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const isLogged = !!session;
 
   return (
-    <GlobalContext.Provider value={{ session, loading, isLogged }}>
+    <GlobalContext.Provider value={{ session, loading, isLogged, refetch, data }}>
       {children}
     </GlobalContext.Provider>
   );

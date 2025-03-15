@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Redirect } from 'expo-router';
 
-import { loginWithGoogle } from '@/lib/supabase';
+import { getCurrentUser, loginWithGoogle } from '@/lib/supabase';
 import { useGlobalContext } from '@/lib/global-provider';
 import { icons, images } from '@/constants';
+import { useSupabase } from '@/hooks/useSupabase';
 
 const SignIn = () => {
-  const [session, setSession] = useState('');
+  const { loading, isLogged, session, data } = useGlobalContext();
 
-  const { loading, isLogged } = useGlobalContext();
+  console.log('ini data', data);
+  console.log('ini session', session);
 
   if (!loading && isLogged) return <Redirect href="/" />;
 
@@ -18,7 +20,7 @@ const SignIn = () => {
     const result = await loginWithGoogle();
 
     if (result) {
-      console.log(result);
+      console.log('ini data', data);
     } else {
       Alert.alert('Error', 'Failed to login');
     }

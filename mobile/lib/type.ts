@@ -1,22 +1,15 @@
 import { Session } from '@supabase/supabase-js';
 
 type ContextType = {
-  isLogged: boolean;
   session: Session | null;
+  data: {} | null;
   loading: boolean;
+  isLogged: boolean;
+  refetch: (newParams: Record<string, string | number>) => Promise<void>;
 };
 
 type Props = {
   children: React.ReactNode;
 };
 
-type UserProfile = {
-  username: string;
-  email: string;
-  full_name: string;
-  password: string;
-  bio: string;
-  avatar_url: string;
-};
-
-export type { ContextType, Props, UserProfile };
+export type { ContextType, Props };

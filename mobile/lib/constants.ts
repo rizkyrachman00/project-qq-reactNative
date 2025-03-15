@@ -10,5 +10,3 @@ if (!process.env.EXPO_PUBLIC_SUPABASE_URL || !process.env.EXPO_PUBLIC_SUPABASE_A
 
 export const SUPABASE_URL = supabaseUrl;
 export const SUPABASE_ANON_KEY = supabaseAnonKey;
-
-// console.log('SUPABASE: ', SUPABASE_ANON_KEY, SUPABASE_URL);

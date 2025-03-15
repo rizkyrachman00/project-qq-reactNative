@@ -5,8 +5,8 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from './constants';
 
 import * as Linking from 'expo-linking';
 import { openAuthSessionAsync } from 'expo-web-browser';
-import { makeRedirectUri } from 'expo-auth-session';
 import * as QueryParams from 'expo-auth-session/build/QueryParams';
+import { makeRedirectUri } from 'expo-auth-session';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
@@ -35,20 +35,21 @@ const createSessionFromUrl = async (url: string) => {
 
 export async function loginWithGoogle() {
   try {
-    // const redirectUri = Linking.createURL('/');
-    const redirectTo = makeRedirectUri();
+    const redirectUri = Linking.createURL('/');
+    // const redirectTo = makeRedirectUri();
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo,
+        redirectTo: redirectUri,
         skipBrowserRedirect: true,
       },
     });
 
     if (error || !data.url) throw new Error('Failed to create OAUTH2 token');
 
-    const browserResult = await openAuthSessionAsync(data?.url ?? '', redirectTo);
+    const browserResult = await openAuthSessionAsync(data?.url ?? '', redirectUri);
+    // const browserResult = await openAuthSessionAsync(data?.url ?? '', redirectTo);
     // const browserResult = await openAuthSessionAsync(data.url, redirectUri);
 
     if (browserResult.type !== 'success') throw new Error('Login Canceled');
@@ -80,5 +81,29 @@ export async function logout() {
   } catch (error) {
     console.error(error);
     return false;
+  }
+}
+
+export async function getCurrentUser() {
+  try {
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
+
+    if (error) throw error;
+
+    if (user) {
+      return {
+        id: user.id,
+        email: user.email,
+        userAvatar: user.user_metadata?.avatar_url || null,
+      };
+    }
+
+    return null;
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 }

@@ -3,6 +3,7 @@ import { icons, images } from '@/constants';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { EquipmentCard, GymPostCard } from '@/components/Cards';
+import Filters from '@/components/Filters';
 
 export default function Home() {
   return (
@@ -39,12 +40,13 @@ export default function Home() {
             <Text className="text-secondary text-base font-rubik-bold">Selengkapnya</Text>
           </TouchableOpacity>
         </View>
-        <View className="flex flex-row gap-5 mt-5">
+
+        <Filters />
+
+        <View className="flex flex-row gap-5 mt-9">
           <GymPostCard />
           <GymPostCard />
         </View>
-
-        {/* <EquipmentCard /> */}
       </View>
     </SafeAreaView>
   );

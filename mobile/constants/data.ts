@@ -1,4 +1,4 @@
-import { icons, images } from './index';
+import { icons } from './index';
 
 export const settings = [
   {
@@ -19,5 +19,20 @@ export const settings = [
     title: 'FitConnect',
     icon: icons.social,
     tintColorImage: 'white',
+  },
+];
+
+export const filterCategories = [
+  {
+    title: 'Semua',
+    category: 'Semua',
+  },
+  {
+    title: 'Piyungan',
+    category: 'Piyungan',
+  },
+  {
+    title: 'Jogja Kota',
+    category: 'Jogja Kota',
   },
 ];

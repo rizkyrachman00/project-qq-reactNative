@@ -1,3 +1,4 @@
+import React from 'react';
 import { useGlobalContext } from '@/lib/global-provider';
 import { Redirect, Slot } from 'expo-router';
 import { ActivityIndicator, Text, View } from 'react-native';

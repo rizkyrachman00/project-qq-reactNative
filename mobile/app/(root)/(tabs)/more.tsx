@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   View,
   Text,
@@ -7,7 +8,6 @@ import {
   ImageSourcePropType,
   Alert,
 } from 'react-native';
-import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { icons, images } from '@/constants';
 import { settings } from '@/constants/data';

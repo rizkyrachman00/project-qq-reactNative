@@ -26,6 +26,7 @@ import edit from '@/assets/icons/edit.png';
 import more from '@/assets/icons/more.png';
 import social from '@/assets/icons/social.png';
 import whatsapp from '@/assets/icons/whatsapp.png';
+import newIcon from '@/assets/icons/new.png';
 
 export default {
   google,
@@ -56,4 +57,5 @@ export default {
   more,
   social,
   whatsapp,
+  newIcon,
 };

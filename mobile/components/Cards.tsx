@@ -36,7 +36,7 @@ export const GymPostCard = ({ onPress }: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="flex-1 w-full px-3 py-4 rounded-lg bg-white shadow-lg shadow-green-100/90 relative"
+      className="flex-1 w-full px-3 py-4 rounded-lg bg-white shadow-lg shadow-green-100/90 relative mt-6"
     >
       <View className="flex flex-row items-center absolute px-2 top-6 right-4 bg-white/90 p-1 rounded-full z-50">
         <Text className="text-green text-[9px] font-rubik-bold">3 menit</Text>
